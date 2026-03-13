@@ -1,0 +1,21 @@
+{
+  "name": "mern_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backEnd && npm install --prefix frontEnd/SoloSync && npm run build --prefix frontEnd/SoloSync",
+    "start":"npm run start --prefix backEnd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Okheer/Project-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Okheer/Project-Tracker/issues"
+  },
+  "homepage": "https://github.com/Okheer/Project-Tracker#readme"
+}

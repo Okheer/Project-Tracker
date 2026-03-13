@@ -3,7 +3,7 @@ import { PenSquareIcon } from "lucide-react";
 import { Trash2Icon } from "lucide-react";
 import { Link } from "react-router";
 import toast from "react-hot-toast";
-import { formatDate } from "../../lib/utils.js";
+import { formatDate } from "../lib/utils.js";
 
 const NotesCard=({note,setNotes})=>{
  const handleDelete=async (e,id)=>{
@@ -12,7 +12,7 @@ const NotesCard=({note,setNotes})=>{
    if(!window.confirm("Are u sure want to stop tracking ")) return
 
    try{
-    const deleteNote= await axios.delete(`http://localhost:5002/api/notes/${id}`)
+    const deleteNote = await api.delete(`/notes/${id}`)
     setNotes((prev)=>prev.filter((note)=>note._id!== id))
     toast.success("Note deleted successfully")
    }catch(e){
@@ -21,18 +21,6 @@ const NotesCard=({note,setNotes})=>{
    }
  }
 
- const handleUpdate=async (e,id)=>{
-    const parameter={title,description,techSlack,update};
-
-    try{
-     const updated=await axios.put(`http://localhost:5002/api/notes/${id}`)
-    
-     toast.success("Update Success")
-    }catch(e){
-      toast.error("Error in Updating")
-    }
-
- }
  return (
    <Link 
       to={`/note/${note.id}`}

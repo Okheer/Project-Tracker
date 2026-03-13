@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar.jsx"
 import {useEffect} from "react"
 import { useState } from "react"
 import RateLimitedUI from "../components/RateLimited.jsx" 
-import axios from "axios"
+import api from "../lib/axios";
 import toast from "react-hot-toast"
 import NotesCard from "../components/NotesCard.jsx"
 
@@ -19,7 +19,7 @@ useEffect(()=>{
     
     const fetchNote=async ()=>{
         try{
-        const res=await axios.get("http://localhost:5002/api/notes");
+        const res=await api.get("/notes")
       console.log(res.data)
         setNotes(res.data)
     }catch(error){

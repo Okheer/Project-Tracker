@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router";
-import axios from "axios";
+import api from "../lib/axios";
 import toast from "react-hot-toast";
 import { ArrowLeftIcon } from "lucide-react";
 
@@ -17,7 +17,7 @@ const NoteDetailPage = () => {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const res = await axios.get(`http://localhost:5002/api/notes/${id}`);
+        const res = await api.get(`/notes/${id}`);
         setTitle(res.data.title);
         setDescription(res.data.description);
         setTechStack(res.data.techStack || []);
@@ -34,7 +34,7 @@ const NoteDetailPage = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.put(`http://localhost:5002/api/notes/${id}`, { title, description, techStack, update });
+    await api.put(`/notes/${id}`, { title, description, techStack, update })    ;
       toast.success("Updated!");
       navigate("/");
     } catch (error) {
